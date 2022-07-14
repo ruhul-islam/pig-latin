@@ -6,15 +6,23 @@ const translate = (str) => {
     newStr = str + "way";
     return newStr;
   } else if (str.match(/[aeiou]/gi)) {
-    let strArray = Array.from(str);
-    const index = (strArray) => {
-      return strArray.findIndex((letter) => {
-        return letter.match(/[aeiou]/gi);
-      });
-    };
+    /// How I did it
+    // let strArray = Array.from(str);
+    // const index = (strArray) => {
+    //   return strArray.findIndex((letter) => {
+    //     return letter.match(/[aeiou]/gi);
+    //   });
+    // };
     // str.substr(index(strArray)) and str.substr(index(strArray), str.length) are the same
-    newStr =
-      str.substr(index(strArray)) + str.substr(0, index(strArray)) + "ay";
+    // newStr =
+    //   str.substr(index(strArray)) + str.substr(0, index(strArray)) + "ay";
+    // return newStr;
+
+    // After seeing the split method
+    const index = Array.from(str).findIndex((letter) => {
+      return letter.match(/[aeiou]/gi);
+    });
+    newStr = str.substr(index) + str.substr(0, index) + "ay";
     return newStr;
   } else {
     return str + "ay";
