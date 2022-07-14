@@ -12,17 +12,29 @@ const translate = (str) => {
         return letter.match(/[aeiou]/gi);
       });
     };
-
-    for (let i = 0; i < index(strArray); i++) {
-      newStr =
-        str.substr(index(strArray), str.length) +
-        str.substr(0, index(strArray)) +
-        "ay";
-      return newStr;
-    }
+    // str.substr(index(strArray)) and str.substr(index(strArray), str.length) are the same
+    newStr =
+      str.substr(index(strArray)) + str.substr(0, index(strArray)) + "ay";
+    return newStr;
   } else {
     return str + "ay";
   }
 };
+
+///// below done in class ////////
+// const translate = (word) => {
+//   word = word.toLowerCase();
+//   const vowels = ["a", "e", "i", "o", "u"];
+//   if (vowels.includes(word[0])) {
+//     return word + "way";
+//   } else {
+//     const index = word.split("").findIndex((letter) => {
+//       return vowels.includes(letter);
+//     });
+//     const last = word.substr(index);
+//     const first = word.substr(0, index);
+//     return last + first + "ay";
+//   }
+// };
 
 module.exports = translate;
